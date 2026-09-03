@@ -10,30 +10,36 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe("Login", () => {
-  test("Should successfully logout and login a registered user", async ({
-    registeredUser,
-    feedPage,
-    userProfilePage,
-    settingsPage,
-    loginPage,
-    homePage,
-  }) => {
-    const userName = registeredUser.username;
-    await feedPage.clickUserIcon(userName);
-    await expect(userProfilePage.getTitle(userName)).toBeVisible();
-    await userProfilePage.clickEditProfileSettingsButton();
-    await expect(settingsPage.getYoutSettingsTitle()).toBeVisible();
-    await settingsPage.clickLogOut();
-    await homePage.verifyNavigationItems();
-    await homePage.clickSignInButton();
-    await expect(loginPage.getSignInTitle()).toBeVisible();
-    await expect(loginPage.getNeedanAccountText()).toBeVisible();
-    await expect(loginPage.getSignInButton()).toBeDisabled();
-    await loginPage.fillSignInForm(registeredUser);
-    await expect(loginPage.getSignInButton()).toBeEnabled();
-    await loginPage.clickSignInButton();
-    await expect(feedPage.getProfileButton(userName)).toBeVisible();
-  });
+  test(
+    "Should successfully logout and login a registered user",
+    {
+      tag: "@smoke",
+    },
+    async ({
+      registeredUser,
+      feedPage,
+      userProfilePage,
+      settingsPage,
+      loginPage,
+      homePage,
+    }) => {
+      const userName = registeredUser.username;
+      await feedPage.clickUserIcon(userName);
+      await expect(userProfilePage.getTitle(userName)).toBeVisible();
+      await userProfilePage.clickEditProfileSettingsButton();
+      await expect(settingsPage.getYoutSettingsTitle()).toBeVisible();
+      await settingsPage.clickLogOut();
+      await homePage.verifyNavigationItems();
+      await homePage.clickSignInButton();
+      await expect(loginPage.getSignInTitle()).toBeVisible();
+      await expect(loginPage.getNeedanAccountText()).toBeVisible();
+      await expect(loginPage.getSignInButton()).toBeDisabled();
+      await loginPage.fillSignInForm(registeredUser);
+      await expect(loginPage.getSignInButton()).toBeEnabled();
+      await loginPage.clickSignInButton();
+      await expect(feedPage.getProfileButton(userName)).toBeVisible();
+    },
+  );
 
   test("Should not sign in with invalid email", async ({
     homePage,
