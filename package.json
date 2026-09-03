@@ -1,0 +1,26 @@
+{
+  "name": "homework-assignment-for-quality-assurance-engineer-position",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:ui:all:prod": "cross-env ENV=prod npx playwright test --project=chromium --project=webkit --project=firefox",
+    "test:api:prod": "cross-env ENV=prod npx playwright test --project=api"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adammr221/homework-assignment-for-quality-assurance-engineer-position.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/adammr221/homework-assignment-for-quality-assurance-engineer-position/issues"
+  },
+  "homepage": "https://github.com/adammr221/homework-assignment-for-quality-assurance-engineer-position#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.4.1",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.4.2"
+  }
+}
