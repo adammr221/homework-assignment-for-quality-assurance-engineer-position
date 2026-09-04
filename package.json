@@ -6,7 +6,8 @@
   "scripts": {
     "test:ui:all:prod": "cross-env ENV=prod npx playwright test --project=chromium --project=webkit --project=firefox",
     "test:api:prod": "cross-env ENV=prod npx playwright test --project=api",
-    "test:smoke:prod": "cross-env ENV=prod npx playwright test --grep '@smoke' --project=chromium --project=api"
+    "test:smoke:prod": "cross-env ENV=prod npx playwright test --grep '@smoke' --project=chromium --project=api",
+    "test:all:prod": "cross-env ENV=prod npx playwright test --project=chromium --project=firefox --project=api"
   },
   "repository": {
     "type": "git",
